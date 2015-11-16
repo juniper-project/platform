@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application name="Symbols_Counter">
+
+    <ProgramModel>
+        <program name="LoadBalancer" javaclass="eu.juniper.program.LoadBalancer"/>
+        <program name="Mapper" javaclass="eu.juniper.program.Mapper"/>
+        <program name="Reducer" javaclass="eu.juniper.program.Reducer"/>
+    </ProgramModel>
+
+    <GroupModel>
+        <mpigroup name="LoadBalancers">
+            <member mpiglobalrank="0" mpilocalrank="0" programName="LoadBalancer"/>
+        </mpigroup>
+        <mpigroup name="Maps">
+            <member mpiglobalrank="1" mpilocalrank="0" programName="Mapper"/>
+            <member mpiglobalrank="2" mpilocalrank="1" programName="Mapper"/>
+            <member mpiglobalrank="3" mpilocalrank="2" programName="Mapper"/>
+        </mpigroup>
+        <mpigroup name="LocalReduces">
+            <member mpiglobalrank="4" mpilocalrank="0" programName="Reducer"/>
+            <member mpiglobalrank="5" mpilocalrank="1" programName="Reducer"/>
+            <member mpiglobalrank="6" mpilocalrank="2" programName="Reducer"/>
+        </mpigroup>
+        <mpigroup name="GlobalReduces">
+            <member mpiglobalrank="7" mpilocalrank="0" programName="Reducer"/>
+        </mpigroup>
+    </GroupModel>
+
+    <CommunicationModel>
+            <dataconnection name="connection1" sendingGroup="LoadBalancers" receiverMpiGroup="Maps" type="one_to_all"/>
+            <dataconnection name="connection2" sendingGroup="Maps" receiverMpiGroup="LocalReduces" type="symmetric"/>
+            <dataconnection name="connection3" sendingGroup="LocalReduces" receiverMpiGroup="GlobalReduces" type="all_to_one"/>
+    </CommunicationModel>
+
+    <DeploymentModel>
+        <cloudnode mpiglobalrank="0" hostipaddr="127.0.0.1"/>
+        <cloudnode mpiglobalrank="1" hostipaddr="127.0.0.1"/>
+        <cloudnode mpiglobalrank="2" hostipaddr="127.0.0.1"/>
+        <cloudnode mpiglobalrank="3" hostipaddr="127.0.0.1"/>
+        <cloudnode mpiglobalrank="4" hostipaddr="127.0.0.1"/>
+        <cloudnode mpiglobalrank="5" hostipaddr="127.0.0.1"/>
+        <cloudnode mpiglobalrank="6" hostipaddr="127.0.0.1"/>
+        <cloudnode mpiglobalrank="7" hostipaddr="127.0.0.1"/>
+    </DeploymentModel>
+
+</application>
