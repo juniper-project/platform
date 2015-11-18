@@ -5,11 +5,11 @@ The package includes:
 
 - A Platform - a run-time environment for executing JUNIPER applications (../JUNIPER.Platform/)
 - A test JUNIPER application (../JUNIPER.Application.MapReduce/) that counts words in the given input text file (../JUNIPER.Application.MapReduce/input), following the famous MapReduce example of Hadoop 
-
+- A test JUNIPER application (../JUNIPER.Application.MapReduce_OfflineMPI/) that does not require an MPI library (OpenMPI) to be installed
 
 ## Prerequisites
 - A Java RTE (e.g. https://www.java.com/en/download/)
-- Open MPI (can be obtained from https://github.com/open-mpi/)
+- Open MPI (can be obtained from https://github.com/open-mpi/). Note that the platform can run without Open MPI in a test configuration
 - Apache Ant build tool (optionally)
 
 ## Building
@@ -26,3 +26,5 @@ We recommend using the Eclipse project supplied with the included MapReduce appl
 
 ## Support and Contact
 You may contact us at cheptsov*at*hlrs.de for any further information on the JUNIPER platform or if any support is needed.
+
+hello
