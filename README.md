@@ -26,5 +26,3 @@ We recommend using the Eclipse project supplied with the included MapReduce appl
 
 ## Support and Contact
 You may contact us at cheptsov*at*hlrs.de for any further information on the JUNIPER platform or if any support is needed.
-
-hello
