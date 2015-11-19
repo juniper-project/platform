@@ -10,11 +10,12 @@ The package includes:
 ## Prerequisites
 - A Java RTE (e.g. https://www.java.com/en/download/)
 - Open MPI (can be obtained from https://github.com/open-mpi/). Note that the platform can run without Open MPI in a test configuration
-- Apache Ant build tool (optionally)
+- Apache Maven build tool
 
 ## Building
-In order to build the test application, switch to its folder and run "ant" without parameters.
-If ant is not available, you can alternatively execute "compile.sh" script.
+Since the libraries that are required by the platform are managed by a dedicated for this repository, Maven tool is required for building.
+In order to build the test application, switch to its folder and run "build.sh" script, which contains the corresponding Maven command sequence.
+You can also execute maven directly with the following commands: "mvn clean compile assembly:single"
 
 ## Running
 The test application provides two examples of the application execution configuration - for 2 and 3 initial "maps".
